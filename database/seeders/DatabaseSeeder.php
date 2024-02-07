@@ -14,9 +14,12 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\Files::factory()->create([
+            'name' => 'primer archivo',
+            'file' => 'pexels-andrea-piacquadio-3760067.jpg',
+            'type' => 'jpg',
+            'created_at' => '2024-02-03 02:54:57',
+            'updated_at' => '2024-02-03 02:54:57'
+        ]);
     }
 }
