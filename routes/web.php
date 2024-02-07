@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::get('/upload', [FileController::class, 'index'])->name('upload');
 
 Route::post('/upload', [FileController::class, 'store'])->name('upload.store');
+
+Route::delete('/upload/delete/{id}', [FileController::class, 'destroy'])->name('upload.destroy');

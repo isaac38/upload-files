@@ -14,6 +14,7 @@ class FileController extends Controller
     public function index()
     {
         $request = Files::all();
+        confirmDelete('Eliminar archivo', 'Quieres eliminar el archivo');
         return view('pages.index', compact('request'));
     }
 
@@ -80,6 +81,23 @@ class FileController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $archivo = Files::find($id);
+        $archivo_path = public_path().'/archivos/'.$archivo->file;
+
+        if (file_exists($archivo_path)) {
+            unlink($archivo_path);
+            $archivo->delete();
+        }else{
+            $archivo->delete();
+        }
+        toast('Archivo eliminado','success');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
+        return redirect()->back();
+
+        //dd($archivo_path);
     }
 }

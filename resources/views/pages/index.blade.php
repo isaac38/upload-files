@@ -29,6 +29,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Archivo</th>
                 <th scope="col">Tipo</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
@@ -48,6 +49,9 @@
                             </a>
                         </td>
                         <td>{{ $item->type }}</td>
+                        <td>
+                            <a href="{{ route('upload.destroy',$item->id) }}" class="btn btn-danger" data-confirm-delete="true">Eliminar</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
