@@ -32,6 +32,18 @@ class FileController extends Controller
     public function store(Request $request)
     {
         //dd($request);
+
+        $rules = [
+            'name' => 'required',
+            'file' => 'required|extensions:jpg,png,jpeg,pdf'
+        ];
+        $messages = [
+            'name.required' => 'Agrega el nombre del archivo.',
+            'file.required' => 'Este campo es requerido.',
+            'file.extensions' => 'Solo se puede jpg, jpeg, png y pdf.',
+        ];
+        $this->validate($request, $rules, $messages);
+
         try {
             $arch = new Files;
             $arch->name = $request->name;
